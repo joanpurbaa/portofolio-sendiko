@@ -7,12 +7,12 @@ export default function Navbar({ className }: { className?: string }) {
   return (
     <nav
       className={cn(
-        "flex items-center justify-between p-4 py-8 px-32",
+        "flex items-center justify-between p-4 py-8 px-32 backdrop-blur-xl",
         className
       )}
     >
       <Link href={"/"} className="flex items-center gap-2">
-        <Image src={"/logo.png"} width={30} height={32} alt="Logo" />
+        <Image src={"/icon.svg"} width={30} height={32} alt="Logo" />
         <p>Muhammad Rizky Sendiko</p>
       </Link>
       <div className="flex items-center gap-4">
