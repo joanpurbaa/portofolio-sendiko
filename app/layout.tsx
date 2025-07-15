@@ -18,6 +18,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="icon" href="/icon.svg" sizes="any" />
+
       <body className={`${plusJakartaSans.className} antialiased`}>
         {children}
       </body>
