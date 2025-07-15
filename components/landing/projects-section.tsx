@@ -7,7 +7,11 @@ export default function ProjectsSection() {
 
       <div className="grid grid-cols-5 gap-2">
         {[...Array(15)].map((_, index) => (
-          <ProjectCard key={index} />
+          <ProjectCard
+            key={index}
+            name="App name"
+            description="Lorem ipsum dolor sit amet consectetur.."
+          />
         ))}
       </div>
     </section>
