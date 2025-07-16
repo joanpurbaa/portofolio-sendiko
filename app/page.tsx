@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Navbar className="fixed w-full z-50" />
-      <main className="overflow-x-hidden">
+      <main className="overflow-x-hidden bg-zinc-900">
         <HeroSection />
         <TechSection />
         <ProjectsSection />

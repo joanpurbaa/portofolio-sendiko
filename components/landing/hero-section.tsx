@@ -8,14 +8,14 @@ export default function HeroSection() {
 				width={555}
 				height={555}
 				alt="gradient circle"
-				className="absolute -top-72 -right-72 -z-10 w-[500px] blur-[300px]"
+				className="absolute -top-72 -right-72 z-0 w-[500px] blur-[300px]"
 			/>
 			<Image
 				src={"/gradient-circle.png"}
 				width={555}
 				height={555}
 				alt="gradient circle"
-				className="absolute -bottom-96 -left-96 -z-10 w-[1000px] blur-[300px]"
+				className="absolute -bottom-96 -left-96 z-0 w-[1000px] blur-[300px]"
 			/>
 			<div className="pt-0 sm:pt-32 lg:mt-0 w-full flex flex-col lg:grid grid-cols-12 items-start lg:items-center gap-10 lg:gap-0">
 				<div className="w-full sm:w-[600px] lg:col-start-1 lg:col-end-8 xl:col-end-9 2xl:col-end-6 flex flex-col gap-3 sm:gap-5">

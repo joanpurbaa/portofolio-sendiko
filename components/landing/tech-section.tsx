@@ -10,7 +10,7 @@ export default function TechSection() {
 					width={555}
 					height={555}
 					alt="gradient circle"
-					className="absolute -bottom-96 -right-96 -z-10 w-[1000px] blur-[300px]"
+					className="absolute -bottom-96 -right-96 z-0 w-[1000px] blur-[300px]"
 				/>
 				<div className="flex flex-col sm:flex-row items-center gap-5">
 					<Image
