@@ -13,11 +13,11 @@ export default function TechSection() {
         alt="gradient circle"
         className="absolute -bottom-64 -right-96 -z-10"
       />
-      <div className="flex">
+      <div className="flex items-start">
         <Image src={"/kotlin.png"} width={128} height={128} alt="kotlin" />
         <div className="max-w-[368px]">
-          <h2 className="text-4xl">Kotlin Multiplatform</h2>
-          <p>
+          <h2 className="text-2xl lg:text-4xl">Kotlin Multiplatform</h2>
+          <p className="text-sm lg:text-base">
             Leveraging the power of Kotlin and Compose Multiplatform to craft
             modern, efficient, and cross-platform mobile applications with clean
             architecture and a seamless user experience.
@@ -25,11 +25,11 @@ export default function TechSection() {
         </div>
       </div>
 
-      <div className="flex flex-row-reverse">
+      <div className="flex flex-row-reverse items-start">
         <Image src={"/ktor.png"} width={128} height={128} alt="Ktor" />
         <div className="max-w-[368px]">
-          <h2 className="text-4xl">Ktor Server</h2>
-          <p>
+          <h2 className="text-2xl lg:text-4xl">Ktor Server</h2>
+          <p className="text-sm lg:text-base">
             Creating robust and scalable RESTful APIs with Ktor Server, designed
             for high performance, clean architecture, and seamless integration
             with modern client applications.

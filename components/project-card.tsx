@@ -22,7 +22,7 @@ export default function ProjectCard({
           <h3 className="font-bold text-sm">{name}</h3>
           <Image src={"/android.png"} width={24} height={24} alt="android" />
         </div>
-        <p className="text-[12px]">{description}</p>
+        <p className="text-[12px] line-clamp-1">{description}</p>
       </div>
     </div>
   );

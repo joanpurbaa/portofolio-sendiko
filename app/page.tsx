@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Navbar className="fixed w-full z-50" />
-      <main className="px-32 overflow-x-hidden">
+      <main className="px-4 lg:px-16 xl:px-32 overflow-x-hidden">
         <HeroSection />
         <AboutSection />
         <TechSection />

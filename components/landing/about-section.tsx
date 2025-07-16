@@ -4,7 +4,7 @@ export default function AboutSection() {
   return (
     <section
       id="about-section"
-      className="relative flex items-center justify-end gap-[252px] min-h-screen py-96"
+      className="relative flex flex-col-reverse lg:flex-row items-center justify-end gap-24 lg:gap-[252px] min-h-screen py-96"
     >
       <Image
         src={"/gradient-circle.png"}

@@ -45,21 +45,27 @@ export default function ExperienceSection() {
         {EXPERIENCES.map((experience, index) => (
           <div
             key={index}
-            className="relative border-l-2 border-primary pl-6 pb-2"
+            className="relative border-l-2 border-primary pl-6 pb-8 lg:pb-2"
           >
             <div className="size-4 rounded-full bg-primary absolute z-10 -left-2.5 -top-2.5"></div>
 
             <div>
               <div>
-                <div className="flex items-baseline gap-2">
-                  <h3 className="font-medium text-2xl">{experience.title}</h3>
-                  <p className="font-extrabold text-sm text-primary">
+                <div className="flex items-baseline justify-between sm:justify-start gap-2">
+                  <h3 className="font-medium text-lg lg:text-2xl flex-1 sm:flex-none">
+                    {experience.title}
+                  </h3>
+                  <p className="font-extrabold text-sm text-primary flex-1 sm:flex-none">
                     {experience.duration}
                   </p>
                 </div>
-                <p className="font-bold">at {experience.company}</p>
+                <p className="font-bold text-sm lg:text-base">
+                  at {experience.company}
+                </p>
               </div>
-              <p className="mt-4 font-medium">{experience.description}</p>
+              <p className="mt-4 font-medium text-sm lg:text-base">
+                {experience.description}
+              </p>
             </div>
           </div>
         ))}
