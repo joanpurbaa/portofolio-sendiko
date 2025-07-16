@@ -13,7 +13,7 @@ export default function ProjectsSection() {
 				alt="gradient circle"
 				className="absolute -bottom-96 -left-96 z-0 w-[1000px] blur-[300px]"
 			/>
-			<h2 className="text-sm sm:text-4xl mb-12 font-semibold">📲 Apps by Me</h2>
+			<h2 className="text-xl sm:text-4xl mb-12 font-semibold">📲 Apps by Me</h2>
 
 			<div className="grid grid-cols-12 gap-5">
 				{[...Array(6)].map((_, index) => (

@@ -2,35 +2,35 @@ const EXPERIENCES = [
   {
     title: "Mobile Developer",
     company: "Direktorat Pusat Informasi, Telkom University",
-    duration: "July 2025 - Now",
+    duration: "Jul 2025 - Now",
     description:
       "Lorem ipsum dolor sit amet consectetur adispicing elit. Lorem ipsum dolor sit amet consectetur adispicing elit.Lorem ipsum dolor sit amet consectetur adispicing elit.",
   },
   {
     title: "Android Development Mentor",
     company: "Chevalier Laboratory SAS, School of Applied Science",
-    duration: "August 2024 - Now",
+    duration: "Aug 2024 - Now",
     description:
       "Lorem ipsum dolor sit amet consectetur adispicing elit. Lorem ipsum dolor sit amet consectetur adispicing elit.Lorem ipsum dolor sit amet consectetur adispicing elit.",
   },
   {
     title: "Mobile Developer",
     company: "Freelance",
-    duration: "July 2023 - Now",
+    duration: "Jul 2023 - Now",
     description:
       "Lorem ipsum dolor sit amet consectetur adispicing elit. Lorem ipsum dolor sit amet consectetur adispicing elit.Lorem ipsum dolor sit amet consectetur adispicing elit.",
   },
   {
     title: "Kotlin Mentor",
     company: "Dilesin Academy",
-    duration: "October 2024 - November 2024",
+    duration: "Oct - Nov 2024",
     description:
       "Lorem ipsum dolor sit amet consectetur adispicing elit. Lorem ipsum dolor sit amet consectetur adispicing elit.Lorem ipsum dolor sit amet consectetur adispicing elit.",
   },
   {
     title: "Android Developer",
     company: "PT. Puskomedia Indonesia Kreatif",
-    duration: "April 2022 - September 2022",
+    duration: "Apr - Sep 2022",
     description:
       "Lorem ipsum dolor sit amet consectetur adispicing elit. Lorem ipsum dolor sit amet consectetur adispicing elit.Lorem ipsum dolor sit amet consectetur adispicing elit.",
   },
@@ -41,7 +41,7 @@ export default function ExperienceSection() {
 			<section
 				id="experience"
 				className="min-h-screen flex flex-col justify-center px-4 lg:px-16 xl:px-64">
-				<h2 className="text-sm sm:text-4xl font-semibold mb-12">
+				<h2 className="text-xl sm:text-4xl font-semibold mb-12">
 					👨‍💻 My Experience
 				</h2>
 				<div className="flex flex-col">

@@ -17,7 +17,7 @@ export default function Navbar({ className }: { className?: string }) {
   return (
     <nav
       className={cn(
-        "flex items-center justify-between py-8 px-4 lg:px-16 xl:px-32 backdrop-blur-xl",
+        "flex items-center justify-between py-4 sm:py-8 px-4 lg:px-16 xl:px-32 backdrop-blur-xl",
         className
       )}
     >
