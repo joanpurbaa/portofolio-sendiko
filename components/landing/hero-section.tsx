@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
 	return (
-		<section className="relative w-screen flex items-center px-4 lg:px-16 xl:px-52 2xl:px-64">
+		<section className="relative w-screen h-screen flex items-center px-4 lg:px-16 xl:px-52 2xl:px-64">
 			<Image
 				src={"/gradient-circle.png"}
 				width={555}
@@ -17,7 +17,7 @@ export default function HeroSection() {
 				alt="gradient circle"
 				className="absolute -bottom-96 -left-96 z-0 w-[1000px] blur-[300px]"
 			/>
-			<div className="pt-32 lg:mt-0 w-full flex flex-col lg:grid grid-cols-12 items-start lg:items-center gap-10 lg:gap-0">
+			<div className="mt-44 lg:mt-0 w-full flex flex-col lg:grid grid-cols-12 items-start lg:items-center gap-10 lg:gap-0">
 				<div className="w-full sm:w-[600px] lg:col-start-1 lg:col-end-8 xl:col-end-9 2xl:col-end-6 flex flex-col gap-3 sm:gap-5">
 					<p className="text-sm sm:text-xl">
 						👋 Hi, i'm <span className="font-semibold">Muhammad Rizky Sendiko</span>
