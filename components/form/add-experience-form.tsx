@@ -5,9 +5,27 @@ export default function AddExperienceForm() {
     <form className="mt-8 p-10 bg-neutral-800 rounded-lg">
       <h2 className="text-xl font-bold mb-8">Tambah pengalaman Baru</h2>
 
-      <TextInput id="posisi" label="Posisi" required className="mb-2" />
-      <TextInput id="perusahaan" label="Perusahaan" required className="mb-2" />
-      <TextInput id="deskripsi" label="Deskripsi" required className="mb-2" />
+      <TextInput
+        id="posisi"
+        label="Posisi"
+        required
+        className="mb-2"
+        placeholder="Mobile Developer"
+      />
+      <TextInput
+        id="perusahaan"
+        label="Perusahaan"
+        required
+        className="mb-2"
+        placeholder="Freelance"
+      />
+      <TextInput
+        id="deskripsi"
+        label="Deskripsi"
+        required
+        className="mb-2"
+        placeholder="Make mobile apps for the company"
+      />
 
       <label htmlFor="tanggal-mulai" className="font-medium">
         Tanggal
@@ -18,7 +36,7 @@ export default function AddExperienceForm() {
           <input
             type="date"
             id="tanggal-mulai"
-            className="w-full p-2 mt-2 border-2 border-neutral-700 rounded-md outline-none"
+            className="w-full p-2 mt-2 border-2 border-neutral-700 rounded-md outline-none text-sm"
             required
           />
         </div>
@@ -27,7 +45,7 @@ export default function AddExperienceForm() {
           <input
             type="date"
             id="tanggal-selesai"
-            className="w-full p-2 mt-2 border-2 border-neutral-700 rounded-md outline-none"
+            className="w-full p-2 mt-2 border-2 border-neutral-700 rounded-md outline-none text-sm"
             required
           />
         </div>
