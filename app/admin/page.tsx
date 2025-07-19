@@ -29,10 +29,10 @@ export default function AdminPage() {
         </p>
       </Link>
       <main className="py-4 sm:py-8 px-4 lg:px-16 xl:px-32 relative">
-        <div className="flex gap-2">
+        <div className="flex gap-2 overflow-x-auto no-scrollbar">
           <Link
             href={"?modal=new-project"}
-            className={`text-center font-semibold pb-3 border-b-2 w-[250px] transition-colors text-sm hover:border-primary hover:text-primary ${
+            className={`text-center font-semibold pb-2 sm:pb-3 border-b-2 min-w-[150px] sm:w-[250px] transition-colors text-xs sm:text-sm hover:border-primary hover:text-primary ${
               modal === "new-project" || !modal
                 ? "border-primary text-primary"
                 : "border-gray-500 text-white"
@@ -42,8 +42,8 @@ export default function AdminPage() {
           </Link>
           <Link
             href={"?modal=new-experience"}
-            className={`text-center font-semibold pb-3 border-b-2 w-[250px] transition-colors text-sm hover:border-primary hover:text-primary ${
-              modal === "new-experience"
+            className={`text-center font-semibold pb-1 sm:pb-3 border-b-2 min-w-[150px] sm:w-[250px] transition-colors text-xs sm:text-sm hover:border-primary hover:text-primary ${
+              modal === "new-experience" || !modal
                 ? "border-primary text-primary"
                 : "border-gray-500 text-white"
             }`}
@@ -52,8 +52,8 @@ export default function AdminPage() {
           </Link>
           <Link
             href={"?modal=new-tech"}
-            className={`text-center font-semibold pb-3 border-b-2 w-[250px] transition-colors text-sm hover:border-primary hover:text-primary ${
-              modal === "new-tech"
+            className={`text-center font-semibold pb-1 sm:pb-3 border-b-2 min-w-[150px] sm:w-[250px] transition-colors text-xs sm:text-sm hover:border-primary hover:text-primary ${
+              modal === "new-tech" || !modal
                 ? "border-primary text-primary"
                 : "border-gray-500 text-white"
             }`}

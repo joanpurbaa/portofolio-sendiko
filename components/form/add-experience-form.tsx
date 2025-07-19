@@ -30,7 +30,7 @@ export default function AddExperienceForm() {
       <label htmlFor="tanggal-mulai" className="font-medium">
         Tanggal
       </label>
-      <div className="flex gap-4 mt-2">
+      <div className="flex flex-col sm:flex-row gap-4 mt-2">
         <div className="w-full">
           <p className="text-sm text-neutral-400">Mulai</p>
           <input

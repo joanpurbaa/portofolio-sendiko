@@ -27,7 +27,7 @@ export default function AddProjectForm() {
         placeholder="kotlin, laravel"
       />
 
-      <fieldset className="inline-flex flex-col gap-2">
+      <fieldset className="inline-flex flex-col gap-2 w-full">
         <label htmlFor="image-preview" className="font-medium">
           Image preview
         </label>

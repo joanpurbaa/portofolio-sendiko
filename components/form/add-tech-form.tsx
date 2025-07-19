@@ -20,7 +20,7 @@ export default function AddTechForm() {
         className="mb-2"
       />
 
-      <fieldset className="inline-flex flex-col gap-2">
+      <fieldset className="inline-flex flex-col gap-2 w-full">
         <label htmlFor="image-preview" className="font-medium">
           Icon
         </label>
