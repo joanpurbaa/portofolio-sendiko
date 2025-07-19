@@ -43,7 +43,7 @@ export default function AdminPage() {
           <Link
             href={"?modal=new-experience"}
             className={`text-center font-semibold pb-1 sm:pb-3 border-b-2 min-w-[150px] sm:w-[250px] transition-colors text-xs sm:text-sm hover:border-primary hover:text-primary ${
-              modal === "new-experience" || !modal
+              modal === "new-experience"
                 ? "border-primary text-primary"
                 : "border-gray-500 text-white"
             }`}
@@ -53,7 +53,7 @@ export default function AdminPage() {
           <Link
             href={"?modal=new-tech"}
             className={`text-center font-semibold pb-1 sm:pb-3 border-b-2 min-w-[150px] sm:w-[250px] transition-colors text-xs sm:text-sm hover:border-primary hover:text-primary ${
-              modal === "new-tech" || !modal
+              modal === "new-tech"
                 ? "border-primary text-primary"
                 : "border-gray-500 text-white"
             }`}
