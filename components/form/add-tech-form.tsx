@@ -5,7 +5,30 @@ export default function AddTechForm() {
     <form className="mt-8 p-10 bg-neutral-800 rounded-lg">
       <h2 className="text-xl font-bold mb-8">Tambah tech Baru</h2>
 
-      <TextInput id="nama" label="Nama" required />
+      <TextInput
+        id="nama"
+        label="Nama"
+        required
+        placeholder="Kotlin"
+        className="mb-2"
+      />
+      <TextInput
+        id="deskripsi"
+        label="Deskripsi"
+        required
+        placeholder="Lorem ipsum dolor sit amet"
+        className="mb-2"
+      />
+
+      <fieldset className="inline-flex flex-col gap-2">
+        <label htmlFor="image-preview" className="font-medium">
+          Icon
+        </label>
+        <input
+          type="file"
+          className="border-2 border-neutral-700 rounded-lg p-3 text-sm"
+        />
+      </fieldset>
 
       <button
         type="submit"
