@@ -23,7 +23,7 @@ export default function TextInput({
       <input
         type="text"
         id={id}
-        className="p-2 border-2 border-neutral-700 rounded-md outline-none"
+        className="p-2 border-2 border-neutral-700 rounded-md outline-none text-sm"
         placeholder={placeholder}
         required={required}
       />
