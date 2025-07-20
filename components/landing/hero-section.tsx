@@ -1,6 +1,21 @@
+"use client";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
+	const handleClick = () => {
+		const email = "rizkysendiko7@gmail.com";
+		const subject = "Saya tertarik dengan company Anda";
+		const body =
+			"Halo Sendiko, saya melihat portofolio Anda dan ingin berdiskusi lebih lanjut.";
+
+		const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+			email
+		)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+		window.open(gmailURL, "_blank");
+	};
+
 	return (
 		<section className="relative w-screen h-screen flex items-center px-4 lg:px-16 xl:px-52 2xl:px-64">
 			<Image
@@ -36,10 +51,21 @@ export default function HeroSection() {
 							Architecture.
 						</p>
 					</div>
-					<div className="flex gap-5 sm:gap-3">
-						<Image src={"/github.png"} width={32} height={32} alt="github" />
-						<Image src={"/linkedin.png"} width={32} height={32} alt="linkedin" />
-						<Image src={"/gmail.png"} width={32} height={32} alt="gmail" />
+					<div className="flex gap-5">
+						<Link target="_blank" href={"https://github.com/Sendiko"}>
+							<Image src={"/github.png"} width={32} height={32} alt="github" />
+						</Link>
+						<Link target="_blank" href={"https://www.linkedin.com/in/rizky-sendiko/"}>
+							<Image src={"/linkedin.png"} width={32} height={32} alt="linkedin" />
+						</Link>
+						<Image
+							className="cursor-pointer"
+							onClick={handleClick}
+							src={"/gmail.png"}
+							width={32}
+							height={32}
+							alt="gmail"
+						/>
 					</div>
 				</div>
 				<div className="col-end-13 col-start-10 2xl:col-end-13">

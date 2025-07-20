@@ -5,6 +5,19 @@ import { useState } from "react";
 export default function Dropdown({ title }: { title: string }) {
 	const [isOpen, setIsOpen] = useState(false);
 
+	const handleClick = () => {
+		const email = "rizkysendiko7@gmail.com";
+		const subject = "Saya tertarik dengan company Anda";
+		const body =
+			"Halo Sendiko, saya melihat portofolio Anda dan ingin berdiskusi lebih lanjut.";
+
+		const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+			email
+		)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+		window.open(gmailURL, "_blank");
+	};
+
 	const toggleDropdown = () => {
 		setIsOpen(!isOpen);
 	};
@@ -45,10 +58,10 @@ export default function Dropdown({ title }: { title: string }) {
 							LinkedIn
 						</Link>
 					</div>
-					<div className="hover:bg-violet-700 px-4 py-2 rounded-b-lg">
-						<Link href={"/"} className="text-white cursor-pointer transition-colors">
-							Email
-						</Link>
+					<div
+						onClick={handleClick}
+						className="hover:bg-violet-700 px-4 py-2 rounded-b-lg">
+						<p className="text-white cursor-pointer transition-colors">Email</p>
 					</div>
 				</div>
 			</div>
