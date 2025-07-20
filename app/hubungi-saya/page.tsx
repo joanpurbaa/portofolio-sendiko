@@ -1,5 +1,6 @@
 "use client";
 import Navbar from "@/components/navbar";
+import axios from "axios";
 import { CircleAlert } from "lucide-react";
 import Image from "next/image";
 import { FormEvent, useState } from "react";
@@ -9,15 +10,28 @@ export default function HubungiSaya() {
 	const [subjek, setSubjek] = useState<string>("");
 	const [description, setDescription] = useState<string>("");
 	const formComplete = email && subjek && description;
+	const [loading, setLoading] = useState(false);
 
 	const formData = new FormData();
 
-	const handleSubmit = (e: FormEvent) => {
+	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
+		setLoading(true);
 
-		formData.append("email", email);
-		formData.append("subjek", subjek);
+		formData.append("senderAddress", email);
+		formData.append("subject", subjek);
 		formData.append("description", description);
+
+		await axios
+			.post(`${process.env.NEXT_PUBLIC_BASE_API}/contactme`, formData, {
+				headers: {
+					authorization: localStorage.getItem("token"),
+					"Content-Type": "application/json",
+				},
+			})
+			.then((result) => console.log(result));
+
+		setLoading(false);
 	};
 
 	return (
@@ -50,8 +64,7 @@ export default function HubungiSaya() {
 							Semua input harus terisi
 						</div>
 					)}
-					<ul
-						className={`${formComplete && "mt-8"} space-y-3 text-xs sm:text-base`}>
+					<ul className={`${formComplete && "mt-8"} space-y-3 text-xs sm:text-base`}>
 						<li className="flex flex-col gap-2">
 							<label htmlFor="">Email</label>
 							<input
@@ -88,7 +101,7 @@ export default function HubungiSaya() {
 										? "cursor-pointer bg-primary hover:bg-violet-700"
 										: "cursor-not-allowed bg-gray-500"
 								} w-full text-white font-semibold p-3 rounded-md`}>
-								Kirim
+								{loading ? "Sedang mengirim..." : "Kirim"}
 							</button>
 						</li>
 					</ul>

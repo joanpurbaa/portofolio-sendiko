@@ -13,6 +13,11 @@ export default function Home() {
 				<TechSection />
 				<ProjectsSection />
 				<ExperienceSection />
+				<footer className="bg-transparent">
+					<p className="text-center text-white text-xs sm:text-sm pb-5">
+						&copy; Sendiko | Sebuah Software House
+					</p>
+				</footer>
 			</main>
 		</>
 	);
