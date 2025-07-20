@@ -1,6 +1,34 @@
+"use client";
+import axios from "axios";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+
+interface Project {
+	id: string;
+	title: string;
+	description: string;
+	imagePreview: string;
+	techStacks: string[];
+}
 
 export default function ProjectsSection() {
+	const [projects, setProjects] = useState<Project[]>([]);
+
+	const fetchProjects = async () => {
+		try {
+			const response = await axios.get(
+				`${process.env.NEXT_PUBLIC_BASE_API}/project`
+			);
+			setProjects(response.data.responseObject);
+		} catch (err: any) {
+			console.error(err);
+		}
+	};
+
+	useEffect(() => {
+		fetchProjects();
+	}, []);
+
 	return (
 		<section
 			id="recent-work"
@@ -13,25 +41,30 @@ export default function ProjectsSection() {
 				className="absolute -bottom-96 -left-96 z-0 w-[1000px] blur-[300px]"
 			/>
 			<h2 className="text-xl sm:text-4xl mb-12 font-semibold">📲 Apps by Me</h2>
-			<div className="grid grid-cols-12 gap-5">
-				{[...Array(6)].map((_, index) => (
+			<div className="z-10 grid grid-cols-12 gap-5">
+				{projects.map((project, index) => (
 					<div key={index} className="col-span-12 md:col-span-6 lg:col-span-4">
 						<img
-							src={"https://mmc.tirto.id/image/2019/07/22/logo-baru-gojek-02.jpg"}
+							src={project.imagePreview}
 							className="w-full h-[200px] object-cover rounded-t-lg"
 						/>
 						<div className="h-[150px] sm:h-[200px] flex flex-col justify-between bg-primary p-5 rounded-b-lg">
 							<div className="flex flex-col gap-2">
-								<h3 className="font-extrabold text-xs sm:text-lg">Gojek</h3>
+								<h3 className="font-extrabold text-xs sm:text-lg">{project.title}</h3>
 								<p className="text-xs sm:text-base line-clamp-2">
-									Mudahkan mobilitas kamu dihari-hari ini, dengan banyaknya promo untuk
-									kamu yang ngator di SCBD!
+									{project.description}
 								</p>
 							</div>
 							<div className="flex gap-3">
-								<p className="bg-violet-700 text-xs sm:text-base px-3 py-1 rounded-sm sm:rounded-md">Kotlin</p>
-								<p className="bg-violet-700 text-xs sm:text-base px-3 py-1 rounded-sm sm:rounded-md">Fluter</p>
-								<p className="bg-violet-700 text-xs sm:text-base px-3 py-1 rounded-sm sm:rounded-md">React Native</p>
+								{Array.isArray(project.techStacks)
+									? project.techStacks.map((tech, i) => (
+											<span
+												key={i}
+												className="inline-block bg-violet-700 text-white px-2 py-1 rounded-md text-xs mr-1 mb-1">
+												{tech}
+											</span>
+									  ))
+									: project.techStacks}
 							</div>
 						</div>
 					</div>

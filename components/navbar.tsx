@@ -45,32 +45,32 @@ export default function Navbar({ className }: { className?: string }) {
 					<Link
 						href={"#about"}
 						className={`${
-							pathname == "/hubungi-saya" ? "hidden" : "block"
+							pathname == "/hubungi-saya" || pathname == "/admin" ? "hidden" : "block"
 						} font-semibold text-xs sm:text-sm`}>
 						ABOUT
 					</Link>
 					<Link
 						href={"#tech-stack"}
 						className={`${
-							pathname == "/hubungi-saya" ? "hidden" : "block"
+							pathname == "/hubungi-saya" || pathname == "/admin" ? "hidden" : "block"
 						} font-semibold text-xs sm:text-sm`}>
 						TECH STACK
 					</Link>
 					<Link
 						href={"#recent-work"}
 						className={`${
-							pathname == "/hubungi-saya" ? "hidden" : "block"
+							pathname == "/hubungi-saya" || pathname == "/admin" ? "hidden" : "block"
 						} font-semibold text-xs sm:text-sm`}>
 						RECENT WORK
 					</Link>
 					<Link
 						href={"#experience"}
 						className={`${
-							pathname == "/hubungi-saya" ? "hidden" : "block"
+							pathname == "/hubungi-saya" || pathname == "/admin" ? "hidden" : "block"
 						} font-semibold text-xs sm:text-sm`}>
 						EXPERIENCE
 					</Link>
-					<Dropdown title="CONTACT ME" />
+					{pathname !== "/admin" && <Dropdown title="CONTACT ME" />}
 				</div>
 			</div>
 		</nav>

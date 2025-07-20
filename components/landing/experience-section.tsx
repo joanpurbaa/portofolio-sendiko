@@ -1,49 +1,50 @@
-const EXPERIENCES = [
-	{
-		title: "Mobile Developer",
-		company: "Direktorat Pusat Informasi, Telkom University",
-		duration: "Jul 2025 - Now",
-		description:
-			"Lorem ipsum dolor sit amet consectetur adispicing elit. Lorem ipsum dolor sit amet consectetur adispicing elit.Lorem ipsum dolor sit amet consectetur adispicing elit.",
-	},
-	{
-		title: "Android Development Mentor",
-		company: "Chevalier Laboratory SAS, School of Applied Science",
-		duration: "Aug 2024 - Now",
-		description:
-			"Lorem ipsum dolor sit amet consectetur adispicing elit. Lorem ipsum dolor sit amet consectetur adispicing elit.Lorem ipsum dolor sit amet consectetur adispicing elit.",
-	},
-	{
-		title: "Mobile Developer",
-		company: "Freelance",
-		duration: "Jul 2023 - Now",
-		description:
-			"Lorem ipsum dolor sit amet consectetur adispicing elit. Lorem ipsum dolor sit amet consectetur adispicing elit.Lorem ipsum dolor sit amet consectetur adispicing elit.",
-	},
-	{
-		title: "Kotlin Mentor",
-		company: "Dilesin Academy",
-		duration: "Oct - Nov 2024",
-		description:
-			"Lorem ipsum dolor sit amet consectetur adispicing elit. Lorem ipsum dolor sit amet consectetur adispicing elit.Lorem ipsum dolor sit amet consectetur adispicing elit.",
-	},
-	{
-		title: "Android Developer",
-		company: "PT. Puskomedia Indonesia Kreatif",
-		duration: "Apr - Sep 2022",
-		description:
-			"Lorem ipsum dolor sit amet consectetur adispicing elit. Lorem ipsum dolor sit amet consectetur adispicing elit.Lorem ipsum dolor sit amet consectetur adispicing elit.",
-	},
-];
+"use client";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+interface Experience {
+	id: string;
+	position: string;
+	organizationName: string;
+	description: string;
+	periodeStart: string;
+	periodeEnd: string;
+}
 
 export default function ExperienceSection() {
+	const [experiences, setExperiences] = useState<Experience[]>([]);
+
+	const fetchExperiences = async () => {
+		try {
+			const response = await axios.get(
+				`${process.env.NEXT_PUBLIC_BASE_API}/experience`
+			);
+			setExperiences(response.data.responseObject);
+		} catch (err: any) {
+			console.error(err);
+		}
+	};
+
+	useEffect(() => {
+		fetchExperiences();
+	}, []);
+
+	const formatDate = (dateString: string) => {
+		if (!dateString) return "";
+		const date = new Date(dateString);
+		return date.toLocaleDateString("id-ID", {
+			year: "numeric",
+			month: "short",
+		});
+	};
+
 	return (
 		<section
 			id="experience"
-			className="min-h-screen flex flex-col justify-center pt-20 sm:pt-32 px-4 lg:px-16 xl:px-64">
+			className="z-10 min-h-screen flex flex-col justify-center pt-20 sm:pt-32 px-4 lg:px-16 xl:px-64">
 			<h2 className="text-xl sm:text-4xl font-semibold mb-12">👨‍💻 My Experience</h2>
 			<div className="flex flex-col">
-				{EXPERIENCES.map((experience, index) => (
+				{experiences.map((experience, index) => (
 					<div
 						key={index}
 						className="relative border-l-2 border-primary pl-6 pb-8 lg:pb-10">
@@ -52,14 +53,19 @@ export default function ExperienceSection() {
 							<div>
 								<div className="flex items-baseline justify-between sm:justify-start gap-2">
 									<h3 className="font-medium text-sm sm:text-lg lg:text-2xl flex-1 sm:flex-none">
-										{experience.title}
+										{experience.position}
 									</h3>
-									<p className="font-extrabold text-xs sm:text-base text-primary flex-1 sm:flex-none text-end sm:text-start">
-										{experience.duration}
-									</p>
+									<div>
+										<p className="font-extrabold text-xs sm:text-base text-primary flex-1 sm:flex-none text-end sm:text-start">
+											{formatDate(experience.periodeStart)}{" - "}
+											{experience.periodeEnd == null
+												? "now"
+												: formatDate(experience.periodeEnd)}
+										</p>
+									</div>
 								</div>
 								<p className="font-bold text-xs sm:text-sm lg:text-base">
-									at {experience.company}
+									at {experience.organizationName}
 								</p>
 							</div>
 							<p className="mt-4 font-medium text-xs sm:text-sm lg:text-base">

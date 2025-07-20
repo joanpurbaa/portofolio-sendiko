@@ -30,9 +30,9 @@ export default function Login() {
 				}
 			);
 
-			localStorage.setItem("token", response.data.token);
+			localStorage.setItem("token", response?.data?.responseObject);
 
-			window.location.href = "/dashboard";
+			window.location.href = "/admin";
 		} catch (err: any) {
 			console.error(err);
 

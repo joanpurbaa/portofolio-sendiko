@@ -22,7 +22,9 @@ export default function RootLayout({
 			<html lang="en">
 				<link rel="icon" href="/icon.svg" sizes="any" />
 
-				<body className={`${plusJakartaSans.className} antialiased`}>
+				<body
+					suppressHydrationWarning={true}
+					className={`${plusJakartaSans.className} antialiased`}>
 					{children}
 				</body>
 			</html>
