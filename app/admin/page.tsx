@@ -5,13 +5,16 @@ import AddMessageForm from "@/components/form/add-message-form";
 import AddProjectForm from "@/components/form/add-project-form";
 import AddTechForm from "@/components/form/add-tech-form";
 import Navbar from "@/components/navbar";
-import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 export default function AdminPage() {
 	const searchParams = useSearchParams();
 	const modal = searchParams.get("modal");
+
+	if (!localStorage.getItem("token")) {
+		window.location.href = "/";
+	}
 
 	return (
 		<>
