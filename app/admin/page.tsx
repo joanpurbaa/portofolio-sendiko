@@ -12,7 +12,10 @@ export default function AdminPage() {
 	const searchParams = useSearchParams();
 	const modal = searchParams.get("modal");
 
-	if (!localStorage.getItem("token")) {
+	if (
+		!localStorage.getItem("token") ||
+		localStorage.getItem("token") == undefined
+	) {
 		window.location.href = "/";
 	}
 

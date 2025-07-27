@@ -18,16 +18,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<Suspense fallback={<>Loading...</>}>
-			<html lang="en">
-				<link rel="icon" href="/icon.svg" sizes="any" />
+		<html lang="en">
+			<link rel="icon" href="/icon.svg" sizes="any" />
 
-				<body
-					suppressHydrationWarning={true}
-					className={`${plusJakartaSans.className} antialiased`}>
-					{children}
-				</body>
-			</html>
-		</Suspense>
+			<body
+				suppressHydrationWarning={true}
+				className={`${plusJakartaSans.className} antialiased`}>
+				<Suspense fallback={<>Loading...</>}>{children}</Suspense>
+			</body>
+		</html>
 	);
 }

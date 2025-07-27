@@ -23,7 +23,7 @@ export default function HubungiSaya() {
 		formData.append("description", description);
 
 		await axios
-			.post(`${process.env.NEXT_PUBLIC_BASE_API}/contactme`, formData, {
+			.post(`${process.env.NEXT_PUBLIC_BASE_API}/v1/contact-me`, formData, {
 				headers: {
 					authorization: localStorage.getItem("token"),
 					"Content-Type": "application/json",

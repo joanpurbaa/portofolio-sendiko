@@ -32,9 +32,9 @@ export default function AddExperienceForm() {
 	const fetchExperiences = async () => {
 		try {
 			const response = await axios.get(
-				`${process.env.NEXT_PUBLIC_BASE_API}/experience`
+				`${process.env.NEXT_PUBLIC_BASE_API}/v1/experience`
 			);
-			setExperiences(response.data.responseObject);
+			setExperiences(response.data.data);
 		} catch (err: any) {
 			console.error(err);
 		}
@@ -60,11 +60,11 @@ export default function AddExperienceForm() {
 
 			if (editingExperience) {
 				await axios.put(
-					`${process.env.NEXT_PUBLIC_BASE_API}/experience/${editingExperience.id}`,
+					`${process.env.NEXT_PUBLIC_BASE_API}/v1/experience/${editingExperience.id}`,
 					experienceData,
 					{
 						headers: {
-							authorization: localStorage.getItem("token"),
+							Authorization: `Bearer ${localStorage.getItem("token")}`,
 							"Content-Type": "application/json",
 						},
 					}
@@ -72,11 +72,11 @@ export default function AddExperienceForm() {
 				location.reload();
 			} else {
 				await axios.post(
-					`${process.env.NEXT_PUBLIC_BASE_API}/experience`,
+					`${process.env.NEXT_PUBLIC_BASE_API}/v1/experience`,
 					experienceData,
 					{
 						headers: {
-							authorization: localStorage.getItem("token"),
+							Authorization: `Bearer ${localStorage.getItem("token")}`,
 							"Content-Type": "application/json",
 						},
 					}
@@ -113,9 +113,9 @@ export default function AddExperienceForm() {
 
 	const handleDelete = async (id: string) => {
 		try {
-			await axios.delete(`${process.env.NEXT_PUBLIC_BASE_API}/experience/${id}`, {
+			await axios.delete(`${process.env.NEXT_PUBLIC_BASE_API}/v1/experience/${id}`, {
 				headers: {
-					authorization: localStorage.getItem("token"),
+					Authorization: `Bearer ${localStorage.getItem("token")}`,
 				},
 			});
 			fetchExperiences();
@@ -257,7 +257,7 @@ export default function AddExperienceForm() {
 							</tr>
 						</thead>
 						<tbody className="relative">
-							{experiences.length === 0 ? (
+							{Array.isArray(experiences) && experiences.length === 0 ? (
 								<tr>
 									<td colSpan={7} className="py-8 text-center text-gray-400">
 										Belum ada pengalaman

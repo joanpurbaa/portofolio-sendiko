@@ -27,9 +27,10 @@ export default function AddProjectForm() {
 	const fetchProjects = async () => {
 		try {
 			const response = await axios.get(
-				`${process.env.NEXT_PUBLIC_BASE_API}/project`
+				`${process.env.NEXT_PUBLIC_BASE_API}/v1/project`
 			);
-			setProjects(response.data.responseObject);
+
+			setProjects(response.data.data);
 		} catch (err: any) {
 			console.error(err);
 		}
@@ -53,7 +54,7 @@ export default function AddProjectForm() {
 			formData.append("description", description);
 
 			techStacksArray.forEach((tech) => {
-				formData.append("techStacks[]", tech);
+				formData.append("techStacks", tech);
 			});
 
 			if (imagePreview) {
@@ -62,11 +63,11 @@ export default function AddProjectForm() {
 
 			if (editingProject) {
 				await axios.put(
-					`${process.env.NEXT_PUBLIC_BASE_API}/project/${editingProject.id}`,
+					`${process.env.NEXT_PUBLIC_BASE_API}/v1/project/${editingProject.id}`,
 					formData,
 					{
 						headers: {
-							authorization: localStorage.getItem("token"),
+							Authorization: `Bearer ${localStorage.getItem("token")}`,
 							"Content-Type": "multipart/form-data",
 						},
 					}
@@ -74,12 +75,16 @@ export default function AddProjectForm() {
 
 				location.reload();
 			} else {
-				await axios.post(`${process.env.NEXT_PUBLIC_BASE_API}/project`, formData, {
-					headers: {
-						authorization: localStorage.getItem("token"),
-						"Content-Type": "multipart/form-data",
-					},
-				});
+				await axios.post(
+					`${process.env.NEXT_PUBLIC_BASE_API}/v1/project`,
+					formData,
+					{
+						headers: {
+							Authorization: `Bearer ${localStorage.getItem("token")}`,
+							"Content-Type": "multipart/form-data",
+						},
+					}
+				);
 
 				location.reload();
 			}
@@ -109,7 +114,7 @@ export default function AddProjectForm() {
 
 	const handleDelete = async (id: string) => {
 		try {
-			await axios.delete(`${process.env.NEXT_PUBLIC_BASE_API}/project/${id}`, {
+			await axios.delete(`${process.env.NEXT_PUBLIC_BASE_API}/v1/project/${id}`, {
 				headers: {
 					authorization: localStorage.getItem("token"),
 				},
@@ -230,7 +235,7 @@ export default function AddProjectForm() {
 							</tr>
 						</thead>
 						<tbody className="relative">
-							{projects.length === 0 ? (
+							{Array.isArray(projects) && projects.length === 0 ? (
 								<tr>
 									<td colSpan={6} className="py-8 text-center text-gray-400">
 										Belum ada project
@@ -246,7 +251,10 @@ export default function AddProjectForm() {
 										<td className="py-4 align-top">
 											<img
 												className="w-[200px] sm:w-[300px] h-[100px] sm:h-[200px] object-cover"
-												src={project.imagePreview || "/default-project.png"}
+												src={
+													`${process.env.NEXT_PUBLIC_BASE_API}/${project.imagePreview}` ||
+													"/default-project.png"
+												}
 												alt={project.title}
 											/>
 										</td>

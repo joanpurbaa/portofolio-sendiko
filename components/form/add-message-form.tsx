@@ -12,21 +12,21 @@ interface Experience {
 }
 
 export default function AddMessageForm() {
-	const [experiences, setExperiences] = useState<Experience[]>([]);
+	const [messages, setMessages] = useState<Experience[]>([]);
 
-	const fetchExperiences = async () => {
+	const fetchMessages = async () => {
 		try {
 			const response = await axios.get(
-				`${process.env.NEXT_PUBLIC_BASE_API}/contactme`
+				`${process.env.NEXT_PUBLIC_BASE_API}/v1/contact-me`
 			);
-			setExperiences(response.data.responseObject);
+			setMessages(response.data.data);
 		} catch (err: any) {
 			console.error(err);
 		}
 	};
 
 	useEffect(() => {
-		fetchExperiences();
+		fetchMessages();
 	}, []);
 
 	return (
@@ -47,27 +47,27 @@ export default function AddMessageForm() {
 							</tr>
 						</thead>
 						<tbody className="relative">
-							{experiences.length === 0 ? (
+							{Array.isArray(messages) && messages.length === 0 ? (
 								<tr>
 									<td colSpan={7} className="py-8 text-center text-gray-400">
-										Belum ada pengalaman
+										Belum ada pesan
 									</td>
 								</tr>
 							) : (
-								Array.isArray(experiences) &&
-								experiences.map((experience, index) => (
-									<tr key={experience.id} className="border-b border-[#D4D4D4]">
+								Array.isArray(messages) &&
+								messages.map((message, index) => (
+									<tr key={message.id} className="border-b border-[#D4D4D4]">
 										<td className="py-4 align-top text-xs sm:text-base font-medium">
 											{index + 1}
 										</td>
 										<td className="py-4 align-top text-xs sm:text-base font-semibold">
-											{experience.senderAddress}
+											{message.senderAddress}
 										</td>
 										<td className="py-4 align-top text-xs sm:text-base font-semibold whitespace-nowrap">
-											{experience.subject}
+											{message.subject}
 										</td>
 										<td className="py-4 px-4 align-top text-xs sm:text-base font-semibold w-[300px]">
-											{experience.description}
+											{message.description}
 										</td>
 									</tr>
 								))

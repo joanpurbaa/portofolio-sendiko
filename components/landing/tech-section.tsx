@@ -16,9 +16,9 @@ export default function TechSection() {
 	const fetchTechStacks = async () => {
 		try {
 			const response = await axios.get(
-				`${process.env.NEXT_PUBLIC_BASE_API}/techstack`
+				`${process.env.NEXT_PUBLIC_BASE_API}/v1/techstack`
 			);
-			setTechStacks(response.data.responseObject);
+			setTechStacks(response.data.data);
 		} catch (err: any) {
 			console.error(err);
 		}
@@ -40,21 +40,26 @@ export default function TechSection() {
 				className="absolute -bottom-96 -right-96 z-0 w-[1000px] blur-[300px]"
 			/>
 			<div className="z-10 flex flex-col gap-[114px]">
-				{techStacks.map((stack, index) => (
-					<div
-						key={stack.id}
-						className={`flex flex-col sm:flex-row ${
-							index % 2 !== 0 ? "sm:flex-row-reverse" : ""
-						} items-center gap-5`}>
-						<img src={stack.icon} className="w-20 sm:w-[130px]" alt={stack.title} />
-						<div className="max-w-[368px] space-y-3 text-center sm:text-start">
-							<h2 className="text-xs sm:text-2xl lg:text-4xl font-semibold">
-								{stack.title}
-							</h2>
-							<p className="text-xs sm:text-sm lg:text-base">{stack.description}</p>
+				{Array.isArray(techStacks) &&
+					techStacks.map((stack, index) => (
+						<div
+							key={stack.id}
+							className={`flex flex-col sm:flex-row ${
+								index % 2 !== 0 ? "sm:flex-row-reverse" : ""
+							} items-center gap-5`}>
+							<img
+								src={`${process.env.NEXT_PUBLIC_BASE_API}/${stack.icon}`}
+								className="w-20 sm:w-[130px]"
+								alt={stack.title}
+							/>
+							<div className="max-w-[368px] space-y-3 text-center sm:text-start">
+								<h2 className="text-xs sm:text-2xl lg:text-4xl font-semibold">
+									{stack.title}
+								</h2>
+								<p className="text-xs sm:text-sm lg:text-base">{stack.description}</p>
+							</div>
 						</div>
-					</div>
-				))}
+					))}
 			</div>
 		</section>
 	);

@@ -24,9 +24,9 @@ export default function AddTechForm() {
 	const fetchTechStacks = async () => {
 		try {
 			const response = await axios.get(
-				`${process.env.NEXT_PUBLIC_BASE_API}/techstack`
+				`${process.env.NEXT_PUBLIC_BASE_API}/v1/techstack`
 			);
-			setTechStacks(response.data.responseObject);
+			setTechStacks(response.data.data);
 		} catch (err: any) {
 			console.error(err);
 		}
@@ -53,11 +53,11 @@ export default function AddTechForm() {
 
 			if (editingTech) {
 				await axios.put(
-					`${process.env.NEXT_PUBLIC_BASE_API}/techstack/${editingTech.id}`,
+					`${process.env.NEXT_PUBLIC_BASE_API}/v1/techstack/${editingTech.id}`,
 					formData,
 					{
 						headers: {
-							authorization: localStorage.getItem("token"),
+							Authorization: `Bearer ${localStorage.getItem("token")}`,
 							"Content-Type": "multipart/form-data",
 						},
 					}
@@ -66,11 +66,11 @@ export default function AddTechForm() {
 				location.reload();
 			} else {
 				await axios.post(
-					`${process.env.NEXT_PUBLIC_BASE_API}/techstack`,
+					`${process.env.NEXT_PUBLIC_BASE_API}/v1/techstack`,
 					formData,
 					{
 						headers: {
-							authorization: localStorage.getItem("token"),
+							Authorization: `Bearer ${localStorage.getItem("token")}`,
 							"Content-Type": "multipart/form-data",
 						},
 					}
@@ -102,12 +102,15 @@ export default function AddTechForm() {
 
 	const handleDelete = async (id: string) => {
 		try {
-			await axios.delete(`${process.env.NEXT_PUBLIC_BASE_API}/techstack/${id}`, {
-				headers: {
-					authorization: localStorage.getItem("token"),
-					"Content-Type": "multipart/form-data",
-				},
-			});
+			await axios.delete(
+				`${process.env.NEXT_PUBLIC_BASE_API}/v1/techstack/${id}`,
+				{
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem("token")}`,
+						"Content-Type": "multipart/form-data",
+					},
+				}
+			);
 			fetchTechStacks();
 		} catch (err: any) {
 			console.error(err);
@@ -209,7 +212,7 @@ export default function AddTechForm() {
 							</tr>
 						</thead>
 						<tbody className="relative">
-							{techStacks.length === 0 ? (
+							{Array.isArray(techStacks) && techStacks.length === 0 ? (
 								<tr>
 									<td colSpan={5} className="py-8 text-center text-gray-400">
 										Belum ada tech stack
@@ -225,7 +228,10 @@ export default function AddTechForm() {
 										<td className="py-4 align-top">
 											<img
 												className="w-[150px] h-[150px] object-cover"
-												src={tech.icon || "/kotlin.png"}
+												src={
+													`${process.env.NEXT_PUBLIC_BASE_API}/${tech.icon}` ||
+													"/kotlin.png"
+												}
 												alt={tech.title}
 											/>
 										</td>

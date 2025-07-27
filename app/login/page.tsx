@@ -20,7 +20,7 @@ export default function Login() {
 
 		try {
 			const response = await axios.post(
-				`${process.env.NEXT_PUBLIC_BASE_API}/auth/signin`,
+				`${process.env.NEXT_PUBLIC_BASE_API}/v1/auth/signin`,
 				{ email, password },
 				{
 					withCredentials: true,
@@ -30,7 +30,7 @@ export default function Login() {
 				}
 			);
 
-			localStorage.setItem("token", response?.data?.responseObject);
+			localStorage.setItem("token", response?.data?.data?.access_token);
 
 			window.location.href = "/admin";
 		} catch (err: any) {
